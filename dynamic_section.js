@@ -4,6 +4,8 @@ $(document).ready(function () {
   //SELECTORS & VARIABLES FOR MOBILE SECTION:
   var allPanels = $(".section-wrap-mobile [id*='text-']").hide();
   $(".section-wrap-mobile #text-1").show();
+  // $(".section-wrap-mobile #line-1").css('opacity', '1');
+  // $(".section-wrap-mobile #line-2").css('opacity', '1');
   var allLines = $(".section-wrap-mobile .divider-line");
   
   var $MOBILE_previousId = 1;
@@ -11,7 +13,9 @@ $(document).ready(function () {
   
   const $MOBILE_line = ".section-wrap-mobile #line-";
   
+  
   //SELECTORS & VARIABLES FOR DESKTOP SECTION:
+  // $(".section-wrap-desktop #text-1").show(500);
   document.querySelector(".section-wrap-desktop #text-1").style.display = "block";
   var $DESK_previousId = 1;
   var $DESK_newId = 0;
@@ -35,6 +39,9 @@ $(document).ready(function () {
       //SHOW ONLY MOBILE SECTION
       $(".section-wrap-desktop").hide(10);
       $(".section-wrap-mobile").show(10);
+      
+      // document.querySelector(".section-wrap-desktop").style.display="none";
+      // document.querySelector(".section-wrap-mobile").sytle.display="block";
       
       //WHEN CLICK IN AN ITEM, SLIDE UP THE PREVIOUS ONE AND SLIDE DOWN THE NEW ONE:
       $(".section-wrap-mobile button").click(function () {
