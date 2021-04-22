@@ -35,7 +35,7 @@ $(document).ready(function () {
     // IF MEDIA IS MOBILE:
     if (mqMobile.matches) {
       
-      console.log("Mobile");
+//       console.log("Mobile");
       
       //SHOW ONLY MOBILE SECTION
       $(".section-wrap-desktop").hide(10);
@@ -51,7 +51,9 @@ $(document).ready(function () {
           //Show the text
           // allPanels.slideUp();
           $(MOBILE_previousPanel + $MOBILE_previousId + "").slideUp();
+          console.log('slide up');
           $(this).parent().next().slideDown();
+          console.log('slide down');
           
           //Show the dividers lines
           allLines
@@ -149,7 +151,7 @@ $(document).ready(function () {
           //SAVE ID FOR THE NEXT CLICK:
           $DESK_previousId = $DESK_newId;
           
-        console.log("Test previousId end: "+$DESK_previousId);//DEBUG
+//         console.log("Test previousId end: "+$DESK_previousId);//DEBUG
         }
       });
     }
