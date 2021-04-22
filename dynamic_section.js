@@ -45,7 +45,7 @@ $(document).ready(function () {
         $MOBILE_newId = +document.getElementById(this.id).value;
         if ($MOBILE_newId != $MOBILE_previousId){
           //Show the text
-          // allPanels.slideUp();
+          allPanels.slideUp();
 //           $(MOBILE_previousPanel + $MOBILE_previousId + "").slideUp();
           console.log('slide up');
           $(this).parent().next().slideDown();
