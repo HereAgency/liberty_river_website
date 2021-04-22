@@ -35,22 +35,18 @@ $(document).ready(function () {
     // IF MEDIA IS MOBILE:
     if (mqMobile.matches) {
       
-//       console.log("Mobile");
-      
       //SHOW ONLY MOBILE SECTION
       $(".section-wrap-desktop").hide(10);
       $(".section-wrap-mobile").show(10);
       
-      // document.querySelector(".section-wrap-desktop").style.display="none";
-      // document.querySelector(".section-wrap-mobile").sytle.display="block";
       
-      //WHEN CLICK IN AN ITEM, SLIDE UP THE PREVIOUS ONE AND SLIDE DOWN THE NEW ONE:
+      //WHEN CLICK ON AN ITEM, HIDE THE PREVIOUS ONE AND SHOW THE NEW ONE:
       $(".section-wrap-mobile button").click(function () {
         $MOBILE_newId = +document.getElementById(this.id).value;
         if ($MOBILE_newId != $MOBILE_previousId){
           //Show the text
           // allPanels.slideUp();
-          $(MOBILE_previousPanel + $MOBILE_previousId + "").slideUp();
+//           $(MOBILE_previousPanel + $MOBILE_previousId + "").slideUp();
           console.log('slide up');
           $(this).parent().next().slideDown();
           console.log('slide down');
