@@ -1,22 +1,15 @@
 $(document).ready(function () {
-
-
   //SELECTORS & VARIABLES FOR MOBILE SECTION:
-  var allPanels = $(".section-wrap-mobile [id*='text-']").hide();
-  $(".section-wrap-mobile #text-1").show();
-  // $(".section-wrap-mobile #line-1").css('opacity', '1');
-  // $(".section-wrap-mobile #line-2").css('opacity', '1');
-  var allLines = $(".section-wrap-mobile .divider-line");
-  var MOBILE_previousPanel = ".section-wrap-mobile #text-";
   
+  $(".section-wrap-mobile #text-1").show();
+  var allPanels = $(".section-wrap-mobile [id*='text-']").hide();
+  var allLines = $(".section-wrap-mobile .divider-line");
+  var allLabels = $(".section-wrap-mobile button");
+  var MOBILE_previousPanel = ".section-wrap-mobile #text-";
   var $MOBILE_previousId = 1;
   var $MOBILE_newId = 0;
-  
   const $MOBILE_line = ".section-wrap-mobile #line-";
-  
-  
   //SELECTORS & VARIABLES FOR DESKTOP SECTION:
-  // $(".section-wrap-desktop #text-1").show(500);
   document.querySelector(".section-wrap-desktop #text-1").style.display = "block";
   var $DESK_previousId = 1;
   var $DESK_newId = 0;
@@ -31,25 +24,22 @@ $(document).ready(function () {
   mqMobile.addListener(checkMediaSize); // Attach listener function on state changes
 
   function checkMediaSize(mqMobile) {
-    
     // IF MEDIA IS MOBILE:
     if (mqMobile.matches) {
-      
       //SHOW ONLY MOBILE SECTION
-      $(".section-wrap-desktop").hide(10);
       $(".section-wrap-mobile").show(10);
-      
-      
-      //WHEN CLICK ON AN ITEM, HIDE THE PREVIOUS ONE AND SHOW THE NEW ONE:
-      $(".section-wrap-mobile button").click(function () {
+      $(".section-wrap-desktop").hide(10);
+      //WHEN CLICK ON AN ITEM, SLIDE UP THE PREVIOUS ONE AND SLIDE DOWN THE NEW ONE:
+      allLabels.click(function () {
         $MOBILE_newId = +document.getElementById(this.id).value;
         if ($MOBILE_newId != $MOBILE_previousId){
           //Show the text
           allPanels.slideUp();
-//           $(MOBILE_previousPanel + $MOBILE_previousId + "").slideUp();
-          console.log('slide up');
+          allLabels.css("opacity", "0.65");
+          
+          // $(MOBILE_previousPanel + $MOBILE_previousId + "").slideUp();
           $(this).parent().next().slideDown();
-          console.log('slide down');
+          $(this).css("opacity", "1");
           
           //Show the dividers lines
           allLines
@@ -65,11 +55,6 @@ $(document).ready(function () {
           $($MOBILE_line + secondLineId)
             .removeClass("hidden-line")
             .addClass("displayed-line");
-//           allLines.css('opacity', '0');
-//           var secondLine = $MOBILE_newId+1;
-          
-//           $($MOBILE_line + $MOBILE_newId).css('opacity', '1');
-//           $($MOBILE_line + secondLine).css('opacity', '1');
         }
         
         $MOBILE_previousId = $MOBILE_newId;
@@ -77,19 +62,14 @@ $(document).ready(function () {
       });
     }
     
-    
     //IF MEDIA IS DESKTOP:
     else {
-      
       //SHOW ONLY DESKTOP SECTION:
-      $(".section-wrap-mobile").hide(10);
       $(".section-wrap-desktop").show(10);
+      $(".section-wrap-mobile").hide(10);
       
       //ANIMATION: When click on item, fade away the previous one and highlight the new one:
       $(".section-wrap-desktop button").click(function() {
-        
-      // console.log("\n"+" Test previousId 1: "+$DESK_previousId);//DEBUG
-        
         //Avoid animation starts before the previous one is completely finished:
         if ($(":animated").length) {
           return false;
@@ -146,8 +126,6 @@ $(document).ready(function () {
           
           //SAVE ID FOR THE NEXT CLICK:
           $DESK_previousId = $DESK_newId;
-          
-//         console.log("Test previousId end: "+$DESK_previousId);//DEBUG
         }
       });
     }
