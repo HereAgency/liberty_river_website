@@ -7,6 +7,7 @@ $(document).ready(function () {
   // $(".section-wrap-mobile #line-1").css('opacity', '1');
   // $(".section-wrap-mobile #line-2").css('opacity', '1');
   var allLines = $(".section-wrap-mobile .divider-line");
+  var MOBILE_previousPanel = ".section-wrap-mobile #text-";
   
   var $MOBILE_previousId = 1;
   var $MOBILE_newId = 0;
@@ -46,10 +47,10 @@ $(document).ready(function () {
       //WHEN CLICK IN AN ITEM, SLIDE UP THE PREVIOUS ONE AND SLIDE DOWN THE NEW ONE:
       $(".section-wrap-mobile button").click(function () {
         $MOBILE_newId = +document.getElementById(this.id).value;
-        
         if ($MOBILE_newId != $MOBILE_previousId){
           //Show the text
-          allPanels.slideUp();
+          // allPanels.slideUp();
+          $(MOBILE_previousPanel + $MOBILE_previousId + "").slideUp();
           $(this).parent().next().slideDown();
           
           //Show the dividers lines
